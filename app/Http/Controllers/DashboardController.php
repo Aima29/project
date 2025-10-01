@@ -6,69 +6,40 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $totalLaporan = 125;
+        // Data dummy (nanti bisa diganti dengan query database)
+        $totalLaporan = 120;
         $laporanSelesai = 80;
-        $laporanProses = 35;
+        $laporanProses = 30;
         $laporanBaru = 10;
 
+        // contoh data array laporan
+        $laporanTerbaru = [
+            [
+                'judul' => '🚧 Jalan Rusak di Jalan Sudirman',
+                'status' => 'Diproses',
+                'tanggal' => '01 Oktober 2025'
+            ],
+            [
+                'judul' => '♻️ Sampah Menumpuk di Pasar Pagi',
+                'status' => 'Selesai',
+                'tanggal' => '29 September 2025'
+            ],
+            [
+                'judul' => '💡 Penerangan Jalan Padam',
+                'status' => 'Baru',
+                'tanggal' => '30 September 2025'
+            ],
+        ];
+
+        // Passing data ke view
         return view('dashboard', [
             'total' => $totalLaporan,
             'selesai' => $laporanSelesai,
             'proses' => $laporanProses,
-            'baru' => $laporanBaru
+            'baru' => $laporanBaru,
+            'laporan' => $laporanTerbaru
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }
